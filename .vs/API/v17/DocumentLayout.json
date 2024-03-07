@@ -1,0 +1,69 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Sistemas-3\\Desktop\\Api\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{ADC12BD8-D684-4C17-B1BE-9DC0D3D9D231}|WebApplication\\WebApplication.csproj|c:\\users\\sistemas-3\\desktop\\api\\webapplication\\controllers\\tb_respuestas_reportescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADC12BD8-D684-4C17-B1BE-9DC0D3D9D231}|WebApplication\\WebApplication.csproj|solutionrelative:webapplication\\controllers\\tb_respuestas_reportescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADC12BD8-D684-4C17-B1BE-9DC0D3D9D231}|WebApplication\\WebApplication.csproj|C:\\Users\\Sistemas-3\\Desktop\\Api\\webapplication\\controllers\\tb_reportes_atencioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADC12BD8-D684-4C17-B1BE-9DC0D3D9D231}|WebApplication\\WebApplication.csproj|solutionrelative:webapplication\\controllers\\tb_reportes_atencioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADC12BD8-D684-4C17-B1BE-9DC0D3D9D231}|WebApplication\\WebApplication.csproj|C:\\Users\\Sistemas-3\\Desktop\\Api\\webapplication\\models\\tb_respuestas_reportes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADC12BD8-D684-4C17-B1BE-9DC0D3D9D231}|WebApplication\\WebApplication.csproj|solutionrelative:webapplication\\models\\tb_respuestas_reportes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TB_RESPUESTAS_REPORTES.cs",
+              "DocumentMoniker": "C:\\Users\\Sistemas-3\\Desktop\\Api\\WebApplication\\Models\\TB_RESPUESTAS_REPORTES.cs",
+              "RelativeDocumentMoniker": "WebApplication\\Models\\TB_RESPUESTAS_REPORTES.cs",
+              "ToolTip": "C:\\Users\\Sistemas-3\\Desktop\\Api\\WebApplication\\Models\\TB_RESPUESTAS_REPORTES.cs",
+              "RelativeToolTip": "WebApplication\\Models\\TB_RESPUESTAS_REPORTES.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-01T15:00:54.012Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TB_RESPUESTAS_REPORTESController.cs",
+              "DocumentMoniker": "C:\\Users\\Sistemas-3\\Desktop\\Api\\WebApplication\\Controllers\\TB_RESPUESTAS_REPORTESController.cs",
+              "RelativeDocumentMoniker": "WebApplication\\Controllers\\TB_RESPUESTAS_REPORTESController.cs",
+              "ToolTip": "C:\\Users\\Sistemas-3\\Desktop\\Api\\WebApplication\\Controllers\\TB_RESPUESTAS_REPORTESController.cs",
+              "RelativeToolTip": "WebApplication\\Controllers\\TB_RESPUESTAS_REPORTESController.cs",
+              "ViewState": "AQIAADYAAAAAAAAAAAAqwD4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-29T17:10:44.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TB_REPORTES_ATENCIONController.cs",
+              "DocumentMoniker": "C:\\Users\\Sistemas-3\\Desktop\\Api\\WebApplication\\Controllers\\TB_REPORTES_ATENCIONController.cs",
+              "RelativeDocumentMoniker": "WebApplication\\Controllers\\TB_REPORTES_ATENCIONController.cs",
+              "ToolTip": "C:\\Users\\Sistemas-3\\Desktop\\Api\\WebApplication\\Controllers\\TB_REPORTES_ATENCIONController.cs",
+              "RelativeToolTip": "WebApplication\\Controllers\\TB_REPORTES_ATENCIONController.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAewA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-01T14:30:55.054Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
