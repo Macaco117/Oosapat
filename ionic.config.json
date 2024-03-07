@@ -1,0 +1,7 @@
+{
+  "name": "OOSAPAT",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

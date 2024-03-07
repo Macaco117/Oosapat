@@ -1,0 +1,99 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>OOSAPAT</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="8">
+          <ion-input placeholder="Ingresa No. Reporte" type="number" [(ngModel)]="FilterID" class="form-control" (keyup)="filter()">
+          </ion-input>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button expand="block" (click)="search()">
+            Si
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+  </ion-item>
+
+  <ion-item>
+    <ion-grid *ngFor="let data of a">
+      <ion-row>
+        <ion-col>
+          <ion-label>Cuenta 
+            <ion-label>{{data.CUENTA}}</ion-label>
+          </ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label>No. Medidor
+            <ion-label>{{data.SERIE_MEDIDOR}}</ion-label>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label>Sector
+            <ion-label>{{data.SECTOR}}</ion-label>
+          </ion-label>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label>Nombre
+            <ion-label>{{data.NOMBRE}}</ion-label>
+          </ion-label>  
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label>Direccion
+            <ion-label>{{data.DIRECCION}}</ion-label>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label>Referencia
+            <ion-label>{{data.REFERENCIA}}</ion-label>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label>Colonia
+            <ion-label>{{data.COLONIA}}</ion-label>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label>Observacion
+            <ion-label>{{data.OBSERVACION}}</ion-label>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-tab-bar>
+      <ion-tab-button href="../home">
+        <ion-icon name="document-outline"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button href="../search">
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-toolbar>
+</ion-footer>
