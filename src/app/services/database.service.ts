@@ -21,7 +21,7 @@ export class DatabaseService {
   }
 
   uploadPhoto(val: any){
-    return this.http.post(this.APIurl + "/TB_RESPUESTAS_REPORTES/savedFile", val)
+    return this.http.post(this.APIurl + "/TB_RESPUESTAS_REPORTES/SaveFile", val)
   }
 
   getR():Observable<any[]>{

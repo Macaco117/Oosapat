@@ -19,16 +19,16 @@ export class HomePage {
   PhotoFileName!: string;
   PhotoFilePath!: string;
 
+  List: any = [];
+  SelectorID: string = "";
+  a: any = [];
+
   constructor(
     public photoService: PhotosService,
     private database: DatabaseService,
     private alertController: AlertController,
   ) {}
 
-  List: any = [];
-
-  SelectorID: string = "";
-    
   async ngOnInit(){
     await this.photoService.loadSaved()
   }
@@ -37,6 +37,33 @@ export class HomePage {
     this.photoService.Photo()
   }
 
+  selector(){
+    var SelectorID = this.SelectorID
+    var val = {
+      Observacion: this.OBSERVACION,
+      Solucion: this.ID_SOLUCION
+    }
+
+    this.List = this.a.filter((el:any) =>{
+      this.database.update
+      if(SelectorID == el.ID_REPORTE){
+        this.database.update(val).subscribe
+      }
+      return console.log(el.ID_REPORTE, " = ", SelectorID)
+    })
+  }
+
+  /*
+  upload(){
+    var val = {
+      Observacion: this.OBSERVACION,
+      Solucion: this.ID_SOLUCION
+    }
+    this.database.update(val).subscribe(res =>{
+      alert(res.toString())
+    })
+  }
+  */
   
   uploadPhoto(event: any){
     //var file = event.target.files[0];
@@ -50,33 +77,9 @@ export class HomePage {
     console.log(this.photoService.photos)
   }
   
-
-  upload(){
-    var val = {
-      Observacion: this.OBSERVACION,
-      Solucion: this.ID_SOLUCION
-    }
-    this.database.update(val).subscribe(res =>{
-      alert(res.toString())
-    })
-    console.log("Observacion es = ", this.OBSERVACION)
-    console.log("Solucion es = ", this.ID_SOLUCION)
-  }
-
   send(){
-    this.upload()
-    this.uploadPhoto(event)
-  }
-
-  selector(){
-    var SelectorID = this.SelectorID
-
-    this.List.filter(function (el: any){
-      return el.ID_REPORTE.toString().toLowerCase().includes(
-        SelectorID.toString().trim().toLowerCase()
-      )
-    })
-    console.log('Id reporte es = ', SelectorID)
+    this.selector()
+    //this.uploadPhoto(event)
   }
 
   async alert(){
@@ -87,7 +90,7 @@ export class HomePage {
         text: 'No',
         role: 'Cancel',
         handler: () => {
-          console.log("no")
+          console.log(this.photoService.photos)
         }
       },{
         text: 'Si',

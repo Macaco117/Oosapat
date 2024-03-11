@@ -13,30 +13,24 @@ export class SearchPage implements OnInit {
   ) {}
 
   List: any = [];
-
   FilterID: string = "";
-
   a: any = [];
 
   ngOnInit() {
-
-  }
-
-  search(){
     this.database.getR().subscribe(data =>{
-      this.List = data;
-      this.a = this.filter();
+      this.a = data;
     })
-    console.log(this.a);
   }
 
   filter(){
     var FilterID = this.FilterID
 
     this.List = this.a.filter(function (el: any){
-      return el.ID_REPORTE.toString().toLowerCase().includes(
-        FilterID.toString().trim().toLowerCase()
-      )
+      if(FilterID == el.ID_REPORTE){
+        return el.ID_REPORTE.toString().toLowerCase().includes(
+          FilterID.toString().trim().toLowerCase()
+        )
+      }
     })
   }
 }
