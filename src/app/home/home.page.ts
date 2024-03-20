@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { PhotosService } from '../services/photos.service';
 import { DatabaseService } from '../services/database.service';
-import { AlertController, IonSelect } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 
 
 @Component({
@@ -11,7 +11,6 @@ import { AlertController, IonSelect } from '@ionic/angular';
 })
 export class HomePage {
 
-  //@Input() bd: any;
   ID_REPORTE!: string;
   ID_SOLUCION!: string;
   OBSERVACION!: string;
@@ -19,10 +18,13 @@ export class HomePage {
   PhotoFileName!: string;
   PhotoFilePath!: string;
 
-  List: any = [];
-  SelectorID: string = "";
   a: any = [];
 
+  select={
+    Domicilio :1,
+    CC: 2,
+  }
+  
   constructor(
     public photoService: PhotosService,
     private database: DatabaseService,
@@ -31,39 +33,29 @@ export class HomePage {
 
   async ngOnInit(){
     await this.photoService.loadSaved()
+
+    this.database.get().subscribe(data =>{
+      this.a = data;
+    })
   }
 
   addPhoto(){
     this.photoService.Photo()
   }
-
-  selector(){
-    var SelectorID = this.SelectorID
-    var val = {
-      Observacion: this.OBSERVACION,
-      Solucion: this.ID_SOLUCION
-    }
-
-    this.List = this.a.filter((el:any) =>{
-      this.database.update
-      if(SelectorID == el.ID_REPORTE){
-        this.database.update(val).subscribe
-      }
-      return console.log(el.ID_REPORTE, " = ", SelectorID)
-    })
-  }
-
-  /*
+  
   upload(){
+    var database = this.database;
     var val = {
-      Observacion: this.OBSERVACION,
-      Solucion: this.ID_SOLUCION
+      ID_REPORTE: this.ID_REPORTE,
+      ID_SOLUCION: this.ID_SOLUCION,
+      OBSERVACION: this.OBSERVACION
     }
-    this.database.update(val).subscribe(res =>{
+
+    database.update(val).subscribe(res => {
       alert(res.toString())
+      console.log(val)
     })
   }
-  */
   
   uploadPhoto(event: any){
     //var file = event.target.files[0];
@@ -78,7 +70,7 @@ export class HomePage {
   }
   
   send(){
-    this.selector()
+    this.upload()
     //this.uploadPhoto(event)
   }
 
@@ -107,5 +99,4 @@ export class HomePage {
     localStorage.clear()
     window.location.reload()
   }
-
 }

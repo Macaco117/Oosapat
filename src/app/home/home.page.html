@@ -12,7 +12,7 @@
         <h2>Ingrese No. de orden de trabajo</h2>
       </ion-row>
       <ion-row>
-        <ion-input placeholder="Ejemplo: 12345" type="number" [(ngModel)]="SelectorID" class="form-control">
+        <ion-input placeholder="Ejemplo: 12345" type="number" [(ngModel)]="ID_REPORTE" class="form-control">
         </ion-input>
       </ion-row>
     </ion-grid>
@@ -30,7 +30,7 @@
 
       <ion-row>
         <ion-select placeholder="Estatus" class="form-control" [(ngModel)]="ID_SOLUCION">
-          <ion-select-option valeu="1">1</ion-select-option>
+          <ion-select-option valeu="1">Solicitud pendiente</ion-select-option>
           <ion-select-option valeu="2">Domicilio no localizado</ion-select-option>
           <ion-select-option valeu="3">No se encontro al usuario</ion-select-option>
           <ion-select-option valeu="4">Trabajo en proceso</ion-select-option>
