@@ -13,6 +13,7 @@ export class PhotosService {
 
   constructor() { }
 
+  //Toma la foto
   public async Photo(){
     const pC = await Camera.getPhoto({
       resultType: CameraResultType.Uri,
@@ -29,6 +30,7 @@ export class PhotosService {
     })
   }
 
+  //Almacena la foto
   public async savePicture(photo: Photo){
     const B64 = await this.readB64(photo)
     const fileName = Date.now() + '.jpeg'
@@ -44,6 +46,7 @@ export class PhotosService {
     }
   }
 
+  //Le Base 64
   private async readB64(photo : Photo){
     const response = await fetch(photo.webPath!)
     const blob = await response.blob()
@@ -51,6 +54,7 @@ export class PhotosService {
     return await this.convertBlobToB64(blob) as string
   }
 
+  //Convierte Bolb a Base64
   private convertBlobToB64 = (blob: Blob) => new Promise((resolve, reject) => {
     const reader = new FileReader()
     reader.onerror = reject
@@ -60,6 +64,7 @@ export class PhotosService {
     reader.readAsDataURL(blob)
   })
 
+  //Carga la foto
   public async loadSaved(){
     const {value} = await Preferences.get({ key: this.PHOTO_STORAGE})
     this.photos = (value ? JSON.parse(value):[]) as Phot0[];
@@ -75,6 +80,7 @@ export class PhotosService {
   }
 }
 
+//Rutas
 export interface Phot0{
   filepath: string;
   webviewPath?: string;

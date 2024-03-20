@@ -11,19 +11,17 @@ import { AlertController } from '@ionic/angular';
 })
 export class HomePage {
 
+  //Variables Reporte
   ID_REPORTE!: string;
-  ID_SOLUCION!: string;
+  ID_SOLUCION: string = "valeu";
   OBSERVACION!: string;
 
+  //Variables Fotos
   PhotoFileName!: string;
   PhotoFilePath!: string;
 
-  a: any = [];
-
-  select={
-    Domicilio :1,
-    CC: 2,
-  }
+  //Variable Datos
+  db: any = [];
   
   constructor(
     public photoService: PhotosService,
@@ -31,18 +29,20 @@ export class HomePage {
     private alertController: AlertController,
   ) {}
 
+  //Carga fotos y base de datos
   async ngOnInit(){
     await this.photoService.loadSaved()
-
     this.database.get().subscribe(data =>{
-      this.a = data;
+      this.db = data;
     })
   }
 
+  //Toma la foto
   addPhoto(){
     this.photoService.Photo()
   }
   
+  //Actualiza reporte
   upload(){
     var database = this.database;
     var val = {
@@ -57,6 +57,7 @@ export class HomePage {
     })
   }
   
+  /*
   uploadPhoto(event: any){
     //var file = event.target.files[0];
     const formData: FormData = new FormData()
@@ -68,12 +69,15 @@ export class HomePage {
     })
     console.log(this.photoService.photos)
   }
+  */
   
+  //Sube la informacion a la base de datos
   send(){
     this.upload()
     //this.uploadPhoto(event)
   }
 
+  //Alerte borrar
   async alert(){
     const alert = await this.alertController.create({
       header: 'Espera un momento',
@@ -95,6 +99,7 @@ export class HomePage {
     await alert.present()
   }
 
+  //Borrar y recargar
   clear(){
     localStorage.clear()
     window.location.reload()

@@ -7,24 +7,29 @@ import { Observable } from 'rxjs';
 })
 export class DatabaseService {
 
+  //Redirecciones
   readonly APIurl= "http://localhost:49885/api";
   readonly Photourl= "http://localhost:49885/Photos";
 
   constructor(private http:HttpClient) { }
 
+  //Obtiene Respuestas_Reportes
   get():Observable<any[]>{
     return this.http.get<any>(this.APIurl + "/TB_RESPUESTAS_REPORTES")
   }
   
+  //Actualiza Respuestas_Reportes
   update(val:any){
     return this.http.put(this.APIurl + "/TB_RESPUESTAS_REPORTES", val)
   }
 
-  uploadPhoto(val: any){
-    return this.http.post(this.APIurl + "/TB_RESPUESTAS_REPORTES/SaveFile", val)
-  }
-
+  //Obtiene Reportes_Atencion
   getR():Observable<any[]>{
     return this.http.get<any>(this.APIurl + "/TB_REPORTES_ATENCION")
+  }
+
+  //Sube Fotos a la base
+  uploadPhoto(val: any){
+    return this.http.post(this.APIurl + "/TB_RESPUESTAS_REPORTES/SaveFile", val)
   }
 }
