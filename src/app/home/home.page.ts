@@ -1,8 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { PhotosService } from '../services/photos.service';
 import { DatabaseService } from '../services/database.service';
 import { AlertController } from '@ionic/angular';
-
 
 @Component({
   selector: 'app-home',
@@ -15,26 +14,29 @@ export class HomePage {
   ID_REPORTE!: string;
   ID_SOLUCION: string = "valeu";
   OBSERVACION!: string;
+  SRC: any;
 
-  //Variables Fotos
-  PhotoFileName!: string;
-  PhotoFilePath!: string;
+  //Variables Ver
+  SHOW = false;
+  HIDE = true;
 
-  //Variable Datos
-  db: any = [];
-  
   constructor(
     public photoService: PhotosService,
     private database: DatabaseService,
     private alertController: AlertController,
   ) {}
-
-  //Carga fotos y base de datos
-  async ngOnInit(){
-    await this.photoService.loadSaved()
-    this.database.get().subscribe(data =>{
-      this.db = data;
-    })
+ 
+  //Activa formulario
+  show(){
+    if(this.ID_REPORTE != null){
+      this.photoService.loadSaved()
+      this.SHOW=true
+      this.HIDE=false
+    }
+    else{
+      this.SHOW=false
+      this.HIDE=true
+    }
   }
 
   //Toma la foto
@@ -45,6 +47,7 @@ export class HomePage {
   //Actualiza reporte
   upload(){
     var database = this.database;
+
     var val = {
       ID_REPORTE: this.ID_REPORTE,
       ID_SOLUCION: this.ID_SOLUCION,
@@ -57,24 +60,22 @@ export class HomePage {
     })
   }
   
-  /*
-  uploadPhoto(event: any){
-    //var file = event.target.files[0];
-    const formData: FormData = new FormData()
-    //formData.append('UploadedFile', file, file.name)
+  uploadPhoto(){
+    var photo = this.photoService.photos[0];
+    const formData: FormData = new FormData();
+    formData.append(photo.filepath, photo.webviewPath);
 
     this.database.uploadPhoto(formData).subscribe((data: any) => {
-      this.photoService.photos = data.toString()
-      this. PhotoFilePath = this.database.Photourl + this.photoService.photos
+
     })
-    console.log(this.photoService.photos)
+    console.log(photo)
+    console.log(this.database.uploadPhoto(photo))
   }
-  */
-  
+
   //Sube la informacion a la base de datos
   send(){
-    this.upload()
-    //this.uploadPhoto(event)
+    //this.upload()
+    this.uploadPhoto()
   }
 
   //Alerte borrar
@@ -98,6 +99,17 @@ export class HomePage {
     })
     await alert.present()
   }
+
+  /*
+  directory(){
+    const fs = require('node:fs');
+    const folderName = 'Desktop/Api/WebApplication/Photos/' + this.ID_REPORTE;
+
+    if (!fs.existsSync(folderName)){
+      fs.mkdirSync(folderName);
+    }
+  }
+  */
 
   //Borrar y recargar
   clear(){

@@ -18,12 +18,28 @@ export class SearchPage implements OnInit {
   
   //Variables Filtro
   FilterID: string = "";
+
+  //Variables Visibles
+  SHOW = false;
+  HIDE = true;
   
   //Carga base de datos
   ngOnInit() {
     this.database.getR().subscribe(data =>{
       this.db = data;
     })
+  }
+
+  //Mostrar
+  show(){
+    if(this.FilterID != null){
+      this.SHOW=true
+      this.HIDE=false
+    }
+    else{
+      this.SHOW=false
+      this.HIDE=true
+    }
   }
 
   //Filtro
@@ -37,5 +53,10 @@ export class SearchPage implements OnInit {
         )
       }
     })
+  }
+
+  search(){
+    this.show()
+    this.filter()
   }
 }

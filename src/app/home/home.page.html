@@ -8,26 +8,23 @@
 
   <ion-item>
     <ion-grid>
-      <ion-row>
-        <h2>Ingrese No. de orden de trabajo</h2>
-      </ion-row>
-      <ion-row>
-        <ion-input placeholder="Ejemplo: 12345" type="number" [(ngModel)]="ID_REPORTE" class="form-control">
-        </ion-input>
-      </ion-row>
+      <ion-row><h3>Actuaizar Reportes</h3></ion-row>
+      <ion-row><ion-col size="9"><ion-input placeholder="Orden de trabajo" type="number" class="form-control" [(ngModel)]="ID_REPORTE"></ion-input></ion-col>
+        <ion-col size="3"><ion-button class="srch-btn" color="success" expand="block" (click)="show()"><ion-icon name="search-outline"></ion-icon></ion-button></ion-col></ion-row>
     </ion-grid>
   </ion-item>
 
-  <ion-item>
+  <ion-item *ngIf="HIDE">
     <ion-grid>
-      <ion-row>
-        <h2>Actualizar datos</h2>
-      </ion-row>
+      <ion-row><ion-label class="instructions">Ingrese una orden de trabajo para modificar los datos del reporte</ion-label></ion-row>
+      <ion-row><ion-label class="icon"><ion-icon name="document-text-outline" class="icon"></ion-icon></ion-label></ion-row>
+    </ion-grid>
+  </ion-item>
 
-      <ion-row>
-        Estatus del reporter
-      </ion-row>
-
+  <ion-item *ngIf="SHOW">
+    <ion-grid>
+      <ion-row><h2>Actualizar datos</h2></ion-row>
+      <ion-row>Estatus del reporter</ion-row>
       <ion-row>
         <ion-select placeholder="Estatus" class="form-control" [(ngModel)]="ID_SOLUCION">
           <ion-select-option value="1">Solicitud pendiente</ion-select-option>
@@ -41,51 +38,23 @@
           <ion-select-option value="13">Cancelada</ion-select-option>
         </ion-select>
       </ion-row>
-
-      <ion-row>
-        Observaciones
-      </ion-row>
-
-      <ion-row>
-        <ion-textarea rows="5" placeholder="Anote sus observaciones"
-        class="form-control" [(ngModel)]="OBSERVACION"></ion-textarea>
-      </ion-row>
+      <ion-row>Observaciones</ion-row>
+      <ion-row><ion-textarea rows="5" placeholder="Anote sus observaciones" class="form-control" [(ngModel)]="OBSERVACION"></ion-textarea></ion-row>
     </ion-grid>
-
   </ion-item>
 
-  <ion-item>
-
+  <ion-item *ngIf="SHOW">
     <ion-grid>
+      <ion-row><h2>Evidencias</h2></ion-row>
       <ion-row>
-        <h2>Evidencias</h2>
-      </ion-row>
-
-      <ion-row>
-        <ion-col size="4"
-          *ngFor="let photo of photoService.photos; index as position">    
-          <ion-img [src]="photo.webviewPath" class="form-control"></ion-img>
-        </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-col>
-          <ion-button (click)="addPhoto()" expand="block" size="large" fill="outline" color="dark">
-            <ion-icon name="camera-outline"></ion-icon>
-          </ion-button>
-        </ion-col>
+        <ion-col size="4" *ngFor="let photo of photoService.photos; index as position"><ion-img [src]="photo.webviewPath"></ion-img></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col>
-          <ion-button (click)="alert()" color="danger" expand="block">
-            <ion-icon name="trash-outline"></ion-icon>
-          </ion-button>
-        </ion-col>
-        <ion-col>
-          <ion-button (click)="send()" color="success" expand="block">
-            <ion-icon name="send-outline"></ion-icon>
-          </ion-button>
-        </ion-col>
+        <ion-col><ion-button (click)="addPhoto()" expand="block" size="default" fill="outline" color="dark"><ion-icon name="camera-outline"></ion-icon></ion-button></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><ion-button (click)="alert()" color="danger" expand="block" size="default"><ion-icon name="trash-outline"></ion-icon></ion-button></ion-col>
+        <ion-col><ion-button (click)="send()" color="success" expand="block" size="default"><ion-icon name="send-outline"></ion-icon></ion-button></ion-col>
       </ion-row>
     </ion-grid>
   </ion-item>
@@ -100,7 +69,7 @@
         <ion-icon name="document-outline"></ion-icon>
       </ion-tab-button>
       <ion-tab-button href="../search">
-        <ion-icon name="search-outline"></ion-icon>
+        <ion-icon name="folder-outline"></ion-icon>
       </ion-tab-button>
     </ion-tab-bar>
   </ion-toolbar>
