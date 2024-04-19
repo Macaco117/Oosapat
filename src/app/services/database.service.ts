@@ -9,15 +9,15 @@ export class DatabaseService {
 
   //Redirecciones
   readonly APIurl= "http://localhost:49885/api";
-  readonly Photourl= "http://localhost:49885/Photos";
+  readonly Photourl= "http://localhost:49885/api/TB_RESPUESTAS_REPORTES/SaveFile";
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {}
 
   //Obtiene Respuestas_Reportes
   get():Observable<any[]>{
     return this.http.get<any>(this.APIurl + "/TB_RESPUESTAS_REPORTES")
   }
-  
+
   //Actualiza Respuestas_Reportes
   update(val:any){
     return this.http.put(this.APIurl + "/TB_RESPUESTAS_REPORTES", val)
@@ -30,6 +30,6 @@ export class DatabaseService {
 
   //Sube Fotos a la base
   uploadPhoto(val: any){
-    return this.http.post(this.APIurl + "/TB_RESPUESTAS_REPORTES/SaveFile", val)
+    return this.http.post(this.Photourl, val)
   }
 }

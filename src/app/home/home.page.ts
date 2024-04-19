@@ -14,7 +14,6 @@ export class HomePage {
   ID_REPORTE!: string;
   ID_SOLUCION: string = "valeu";
   OBSERVACION!: string;
-  SRC: any;
 
   //Variables Ver
   SHOW = false;
@@ -56,26 +55,25 @@ export class HomePage {
 
     database.update(val).subscribe(res => {
       alert(res.toString())
-      console.log(val)
     })
   }
   
-  uploadPhoto(){
-    var photo = this.photoService.photos[0];
+  //Sube foto
+  uploadPhoto(event: any){
+    var file = event.target.files[0]
     const formData: FormData = new FormData();
-    formData.append(photo.filepath, photo.webviewPath);
-
+    formData.append("si", file, file.Name);
     this.database.uploadPhoto(formData).subscribe((data: any) => {
 
     })
-    console.log(photo)
-    console.log(this.database.uploadPhoto(photo))
+    console.log("Se subio el archivo:", file)
+    console.log(formData)
   }
 
   //Sube la informacion a la base de datos
   send(){
     //this.upload()
-    this.uploadPhoto()
+    //this.uploadPhoto(event)
   }
 
   //Alerte borrar
@@ -87,7 +85,6 @@ export class HomePage {
         text: 'No',
         role: 'Cancel',
         handler: () => {
-          console.log(this.photoService.photos)
         }
       },{
         text: 'Si',
@@ -99,21 +96,11 @@ export class HomePage {
     })
     await alert.present()
   }
-
-  /*
-  directory(){
-    const fs = require('node:fs');
-    const folderName = 'Desktop/Api/WebApplication/Photos/' + this.ID_REPORTE;
-
-    if (!fs.existsSync(folderName)){
-      fs.mkdirSync(folderName);
-    }
-  }
-  */
-
+  
   //Borrar y recargar
   clear(){
     localStorage.clear()
     window.location.reload()
   }
+
 }

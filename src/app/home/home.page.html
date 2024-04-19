@@ -40,6 +40,8 @@
       </ion-row>
       <ion-row>Observaciones</ion-row>
       <ion-row><ion-textarea rows="5" placeholder="Anote sus observaciones" class="form-control" [(ngModel)]="OBSERVACION"></ion-textarea></ion-row>
+
+      <ion-row><ion-input type="file" class="form-control" (change)="uploadPhoto($event)"></ion-input></ion-row>
     </ion-grid>
   </ion-item>
 
